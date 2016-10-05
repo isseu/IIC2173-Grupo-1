@@ -11,7 +11,7 @@ class Chat extends Component {
     super(props);
     this.state = {
       input: '',
-      messages: [1, 2, 3],
+      messages: [],
       users: [1, 2, 3]
     }
     this.handleSendMessage = this.handleSendMessage.bind(this)

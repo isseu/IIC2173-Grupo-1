@@ -1,5 +1,8 @@
 .RoomList {
-  
+
+}
+.RoomList .btn {
+	border-radius: 0px;
 }
 .RoomList h3 {
   margin-left: 10px;

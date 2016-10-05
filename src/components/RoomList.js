@@ -7,7 +7,7 @@ class RoomList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {}
     this.updateChatList = this.updateChatList.bind(this)
   }
 

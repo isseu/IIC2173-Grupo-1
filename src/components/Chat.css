@@ -41,6 +41,7 @@
 	background-color: #fff;
 	border-radius: 0px 0px 4px 4px;
 	padding: 10px 15px;
+	border-top: 1px solid #e7e7e7;
 }
 .chat_input .form-group {
 	margin-bottom: 0px;
