@@ -1,10 +1,13 @@
 Tarea IIC2173
 =============
 
-Chat distribuido [deepstream.io](http://deepstream.io)
+Chat distribuido creado con [deepstream.io](http://deepstream.io)
 
-#### Start client
+#### Instalar dependencias
+`$ npm install`
+
+#### Iniciar cliente
 `$ npm run start`
 
-#### Start server
+#### Iniciar servidor
 `$ npm run server`
