@@ -8,9 +8,10 @@ import './index.css';
 const client = deepstream('localhost:6020').login({}, () => {
   //ReactDOM.render call will go in here
 })
+
 DeepstreamMixin.setDeepstreamClient(client)
 
 ReactDOM.render(
-  <App />,
+  <App client={client} />,
   document.getElementById('root')
 );

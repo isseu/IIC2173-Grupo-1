@@ -1,51 +1,30 @@
 .messages .message {
     clear: both;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     transition: all 0.5s linear;
 }
-.messages .message.right .avatar {
-    background-color: #fdbf68;
-    float: right;
+
+.message-user-name {
+
 }
-.messages .message.left .avatar {
-    background-color: #f5886e;
-    float: left;
+
+.messages .message .user-name {
+
 }
-.messages .message .avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: inline-block;
-}
-.messages .message.right .text {
+.messages .message .text {
     color: #45829b;
 }
-.messages .message.left .text {
-    color: #c48843;
-}
-.messages .message.left .text_wrapper {
-  background-color: #ffe6cb;
-  margin-left: 20px;
-}
-.messages .message.right .text_wrapper {
+.messages .message .text-wrapper {
     background-color: #c7eafc;
-    margin-right: 20px;
-    float: right;
-}
-.messages .message .text_wrapper {
-    display: inline-block;
+    width: 100%;
+    clear: both;
     padding: 20px;
-    border-radius: 6px;
-    width: calc(100% - 85px);
+    border-radius: 5px;
     min-width: 100px;
     position: relative;
 }
-.messages .message .text_wrapper .text {
+.messages .message .text-wrapper .text {
     font-size: 18px;
     font-weight: 300;
-}
-
-.messages .message.left .text {
-    color: #c48843;
 }

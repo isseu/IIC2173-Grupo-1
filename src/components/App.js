@@ -20,14 +20,24 @@ class App extends Component {
           </Nav>
         </Navbar>
         <Col xs={4} md={3} className="full_height">
-        	<RoomList/>
+        	<RoomList />
         </Col>
         <Col xs={8} md={9} className="full_height">
-        	<Chat/>
+        	<Chat />
         </Col>
       </div>
     )
   }
+
+  getChildContext() {
+    return {
+      client: this.props.client
+    }
+  }
+}
+
+App.childContextTypes = {
+  client: React.PropTypes.object.isRequired
 }
 
 export default App;
