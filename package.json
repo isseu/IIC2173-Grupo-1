@@ -1,0 +1,25 @@
+{
+  "name": "IIC2173-Grupo-1",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.6.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "deepstream.io": "^1.1.1",
+    "deepstream.io-client-js": "^1.1.1",
+    "deepstream.io-tools-react": "^0.1.5",
+    "react": "^15.3.2",
+    "react-bootstrap": "^0.30.3",
+    "react-dom": "^15.3.2",
+    "react-mixin": "^2.0.2"
+  },
+  "scripts": {
+    "server": "node server/init.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
