@@ -25,11 +25,11 @@ class RoomList extends Component {
     return (
       <div className="RoomList">
         <Button bsStyle="primary" block>Nuevo Chat</Button>
-        <h3>Participando (0)</h3>
+        <h3>Participando ({this.state.rooms.length})</h3>
         <ListGroup>
           {this.state.rooms.map((room) => <Room data={room} key={room._id}/>)}
         </ListGroup>
-        <h3>Cercanos (0)</h3>
+        <h3>Cercanos ({this.state.rooms.length})</h3>
         <ListGroup>
           {this.state.rooms.map((room) => <Room data={room} key={room._id}/>)}
         </ListGroup>
