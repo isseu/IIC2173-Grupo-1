@@ -9,7 +9,6 @@ class Room extends Component {
     this.state = {
       name: ''
     }
-    this.clickRoomHandle = this.clickRoomHandle.bind(this)
   }
 
   componentDidMount () {
@@ -21,16 +20,12 @@ class Room extends Component {
   }
 
   componentWillUnmount() {
-    this.world_rooms.unsubscribe()
-  }
-
-  clickRoomHandle() {
-    alert(1)
+    this.room_record.unsubscribe()
   }
 
   render() {
     return (
-      <ListGroupItem header={this.state.name} className="Room" onClick={this.clickRoomHandle}>
+      <ListGroupItem header={this.state.name} className="Room" onClick={() => this.props.onClick(this.props.dsRecord)}>
         {this.state.name}
       </ListGroupItem>
     )
@@ -39,6 +34,11 @@ class Room extends Component {
 
 Room.contextTypes = {
   client: React.PropTypes.object.isRequired
+}
+
+Room.PropTypes = {
+  bsRecord: React.PropTypes.string.isRequired,
+  onClick: React.PropTypes.func.isRequired
 }
 
 export default Room;

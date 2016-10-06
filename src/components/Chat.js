@@ -10,6 +10,7 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: '',
       input: '',
       messages: [],
       users: [1, 2, 3]
@@ -19,6 +20,11 @@ class Chat extends Component {
   }
 
   componentWillMount() {
+    this.room = this.context.client.record.getRecord(this.props.bsRecord)
+    this.setState({ name: this.room.get('name') })
+    this.room.subscribe('name', (new_name) => {
+      this.setState({ name: new_name })
+    }, true)
     this.context.client.event.subscribe('new-message-chat', (data) => {
       this.setState({ messages: this.state.messages.concat([data])}, () => {
         var node = this.refs.messages
@@ -47,7 +53,7 @@ class Chat extends Component {
       <div className="chat_box">
         <Col xs={12} md={9} className="chat_messages">
           <div className="chat_top">
-            <h4>Chat Name</h4>
+            <h4>{this.state.name}</h4>
           </div>
           <div className="messages" ref="messages">
             <ul>
@@ -85,6 +91,10 @@ class Chat extends Component {
 
 Chat.contextTypes = {
   client: React.PropTypes.object.isRequired
+}
+
+Chat.PropTypes = {
+  bsRecord: React.PropTypes.string.isRequired,
 }
 
 export default Chat;

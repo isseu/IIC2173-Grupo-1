@@ -7,6 +7,10 @@
 	background-color: #434753;
 }
 
+.chat_space {
+	background-color: #ffffff;
+}
+
 .full_height {
 	height: 100%;
 	overflow-y: auto;

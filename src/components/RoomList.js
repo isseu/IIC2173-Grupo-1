@@ -8,44 +8,53 @@ class RoomList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user_rooms: [],
       rooms: []
     }
-    this.updateChatList = this.updateChatList.bind(this)
-    this.handleClickNewChat = this.handleClickNewChat.bind(this)
+    this.handleClickNewRoom = this.handleClickNewRoom.bind(this)
+    this.handleClickGlobalRoom = this.handleClickGlobalRoom.bind(this)
   }
 
   componentWillMount() {
-    this.rooms = this.context.client.record.getRecord('user-1')
-    this.rooms.subscribe('chats', this.updateChatList)
-    this.world_rooms = this.context.client.record.getList( 'chats' );
-    this.setState({ rooms: this.world_rooms.getEntries() })
-    this.world_rooms.subscribe( ( list ) => {
+    this.user_rooms_list = this.context.client.record.getList('user-1/chats')
+    this.setState({ user_rooms: this.user_rooms_list.getEntries() })
+    this.user_rooms_list.subscribe( ( list ) => {
+      this.setState({ user_rooms: list })
+    }, false );
+    this.rooms_list = this.context.client.record.getList( 'chats' );
+    this.setState({ rooms: this.rooms_list.getEntries() })
+    this.rooms_list.subscribe( ( list ) => {
       this.setState({ rooms: list })
     }, false );
   }
 
-  handleClickNewChat() {
-    var id = 'chat/' + this.context.client.getUid();
+  handleClickNewRoom() {
+    var id = 'chats/' + this.context.client.getUid();
     this.context.client.record.getRecord( id ).set('name', "Nombre de chat");
-    this.world_rooms.addEntry( id );
+    this.rooms_list.addEntry( id );
   }
 
-  updateChatList() {
-
+  handleClickGlobalRoom(room) {
+    // Add it to user list if not exists
+    this.context.client.record.has('user-1/' + room, (error, hasRecord) => {
+      if(this.state.user_rooms.indexOf(room) === -1 && !hasRecord) { // hasRecord esta malo
+        this.user_rooms_list.addEntry( room );
+      }
+    })
+    this.props.onClickChatRoom(room)
   }
 
   render() {
-    // this.state.rooms = [1, 2, 3, 4]
     return (
       <div className="RoomList">
-        <Button className="btn-morado" block onClick={this.handleClickNewChat}>Nuevo Chat</Button>
-        <h3>Participando ({this.state.rooms.length})</h3>
+        <Button className="btn-morado" block onClick={this.handleClickNewRoom}>Nuevo Chat</Button>
+        <h3>Participando ({this.state.user_rooms.length})</h3>
         <ListGroup>
-          {this.state.rooms.map((room) => <Room dsRecord={room} key={room} />)}
+          {this.state.user_rooms.map((room) => <Room dsRecord={room} key={'l-' + room} onClick={this.props.onClickChatRoom}/>) }
         </ListGroup>
         <h3>Cercanos ({this.state.rooms.length})</h3>
         <ListGroup>
-          {this.state.rooms.map((room) => <Room dsRecord={room} key={room} />)}
+          {this.state.rooms.map((room) => <Room dsRecord={room} key={'g-' + room} onClick={this.handleClickGlobalRoom}/>) }
         </ListGroup>
       </div>
     );
@@ -54,6 +63,10 @@ class RoomList extends Component {
 
 RoomList.contextTypes = {
   client: React.PropTypes.object.isRequired
+}
+
+RoomList.PropTypes = {
+  onClickChatRoom: React.PropTypes.func.isRequired
 }
 
 export default RoomList;

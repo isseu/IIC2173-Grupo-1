@@ -10,8 +10,10 @@ class App extends Component {
     super(props);
     this.state = {
       latitude: '',
-      longitude: ''
+      longitude: '',
+      selected_chat_room: undefined
     }
+    this.handleOnChangeSelectedRoom = this.handleOnChangeSelectedRoom.bind(this)
   }
 
   componentWillMount() {
@@ -23,6 +25,10 @@ class App extends Component {
           })
         }, (errorCode) => alert(errorCode) );
     }
+  }
+
+  handleOnChangeSelectedRoom(room) {
+    this.setState({ selected_chat_room: room })
   }
 
   render() {
@@ -49,10 +55,10 @@ class App extends Component {
           </Nav>
         </Navbar>
         <Col xs={4} md={3} className="full_height">
-        	<RoomList />
+        	<RoomList onClickChatRoom={this.handleOnChangeSelectedRoom} />
         </Col>
-        <Col xs={8} md={9} className="full_height">
-        	<Chat />
+        <Col xs={8} md={9} className="full_height chat_space">
+        	{this.state.selected_chat_room ? <Chat bsRecord={this.state.selected_chat_room} /> : ''}
         </Col>
       </div>
     )
