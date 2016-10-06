@@ -66,7 +66,7 @@ class Chat extends Component {
                     bsSize="large"
                   />
                   <InputGroup.Button>
-                    <Button bsStyle="primary" bsSize="large" onClick={this.handleSendMessage}>Enviar</Button>
+                    <Button className="btn-morado" bsSize="large" onClick={this.handleSendMessage}>Enviar</Button>
                   </InputGroup.Button>
                 </InputGroup>
               </FormGroup>
@@ -75,7 +75,7 @@ class Chat extends Component {
           </Col>
           <Col md={3} className="chat_user_list hidden-xs hidden-sm">
             <ul className="user-list">
-              {this.state.users.map((user) => <UserListItem data={user} key={user._id}/>)}
+              {this.state.users.map((user) => <UserListItem data={user} key={user}/>)}
             </ul>
           </Col>
       </div>

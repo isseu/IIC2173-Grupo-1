@@ -6,17 +6,19 @@
 }
 
 .message-user-name {
-
+  margin-left: 15px;
 }
 
 .messages .message .user-name {
-
+}
+.message-user-name small {
+  color: #c9cdd9;
 }
 .messages .message .text {
-    color: #45829b;
+    color: #ffffff;
 }
 .messages .message .text-wrapper {
-    background-color: #c7eafc;
+    background-color: #62BF6E;
     width: 100%;
     clear: both;
     padding: 20px;

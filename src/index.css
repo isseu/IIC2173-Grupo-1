@@ -1,11 +1,12 @@
 html, body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 body {
   overflow: hidden;
   height: 3000px;
   width: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 .col-md-9, .col-md-3, .col-md-12, .col-xs-9, .col-xs-3, .col-xs-12  {
 	padding: 0px;
@@ -21,4 +22,119 @@ body {
 }
 .navbar {
   margin-bottom: -1px;
+}
+
+.navbar-default {
+  background-color: #434753;
+  border-color: #434753;
+}
+.navbar-default .navbar-brand {
+  color: #ffffff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #ffffff;
+}
+.navbar-default .navbar-text {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: #696c75;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: #696c75;
+}
+.navbar-default .navbar-toggle {
+  border-color: #696c75;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #696c75;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ffffff;
+}
+.navbar-default .navbar-link {
+  color: #ffffff;
+}
+.navbar-default .navbar-link:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #696c75;
+  }
+}
+.btn-morado {
+  color: #ffffff;
+  background-color: #434753;
+  border-color: #434753;
+}
+
+.btn-morado:hover,
+.btn-morado:focus,
+.btn-morado:active,
+.btn-morado.active,
+.open .dropdown-toggle.btn-morado {
+  color: #ffffff;
+  background-color: #696C75;
+  border-color: #434753;
+}
+
+.btn-morado:active,
+.btn-morado.active,
+.open .dropdown-toggle.btn-morado {
+  background-image: none;
+}
+
+.btn-morado.disabled,
+.btn-morado[disabled],
+fieldset[disabled] .btn-morado,
+.btn-morado.disabled:hover,
+.btn-morado[disabled]:hover,
+fieldset[disabled] .btn-morado:hover,
+.btn-morado.disabled:focus,
+.btn-morado[disabled]:focus,
+fieldset[disabled] .btn-morado:focus,
+.btn-morado.disabled:active,
+.btn-morado[disabled]:active,
+fieldset[disabled] .btn-morado:active,
+.btn-morado.disabled.active,
+.btn-morado[disabled].active,
+fieldset[disabled] .btn-morado.active {
+  background-color: #434753;
+  border-color: #434753;
+}
+
+.btn-morado .badge {
+  color: #434753;
+  background-color: #ffffff;
 }

@@ -9,12 +9,10 @@
     "classnames": "^2.2.5",
     "deepstream.io": "^1.1.1",
     "deepstream.io-client-js": "^1.1.1",
-    "deepstream.io-tools-react": "^0.1.5",
     "moment": "^2.15.1",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.3",
-    "react-dom": "^15.3.2",
-    "react-mixin": "^2.0.2"
+    "react-dom": "^15.3.2"
   },
   "scripts": {
     "server": "node server/init.js",

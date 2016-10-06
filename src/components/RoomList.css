@@ -1,9 +1,11 @@
 .RoomList {
-
+	background-color: #434753;
+	color: #ffffff;
 }
 .RoomList .btn {
 	border-radius: 0px;
 }
 .RoomList h3 {
+	font-size: 20px;
   margin-left: 10px;
 }
