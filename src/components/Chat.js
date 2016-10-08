@@ -19,13 +19,20 @@ class Chat extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  componentWillReceiveProps () {
+    this.setState({
+      input: '',
+      messages: []
+    })
+  }
+
   componentWillMount() {
     this.room = this.context.client.record.getRecord(this.props.bsRecord)
     this.setState({ name: this.room.get('name') })
     this.room.subscribe('name', (new_name) => {
       this.setState({ name: new_name })
     }, true)
-    this.context.client.event.subscribe('new-message-chat', (data) => {
+    this.context.client.event.subscribe(this.props.bsRecord + '/new-message-chat', (data) => {
       this.setState({ messages: this.state.messages.concat([data])}, () => {
         var node = this.refs.messages
         node.scrollTop = node.scrollHeight

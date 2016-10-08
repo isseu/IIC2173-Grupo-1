@@ -18,4 +18,12 @@ class UserListItem extends Component {
   }
 }
 
+UserListItem.contextTypes = {
+  client: React.PropTypes.object.isRequired
+}
+
+UserListItem.PropTypes = {
+  dsRecord: React.PropTypes.string.isRequired
+}
+
 export default UserListItem;

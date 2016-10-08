@@ -30,7 +30,7 @@ class RoomList extends Component {
 
   handleClickNewRoom() {
     var id = 'chats/' + this.context.client.getUid();
-    this.context.client.record.getRecord( id ).set('name', "Nombre de chat");
+    this.context.client.record.getRecord( id ).set('name', 'Nombre de chat');
     this.rooms_list.addEntry( id );
   }
 
