@@ -39,11 +39,10 @@ class App extends Component {
     // TODO
     var chatStyle = { }
     if(this.state.latitude !== '' && this.state.longitude !== '') {
+      var latLng = this.state.latitude + "," + this.state.longitude
       chatStyle = {
-        backgroundImage: "url('https://maps.googleapis.com/maps/api/staticmap?center=" + this.state.latitude + "," + this.state.longitude + "&size=980x980&zoom=11&scale=2')",
-        backgroundSize: 'cover'
+        backgroundImage: "url('https://maps.googleapis.com/maps/api/staticmap?center=" + latLng + "&size=980x980&zoom=11&scale=2&maptype=satellite&markers=color:blue||" + latLng + "')"
       }
-      console.dir(chatStyle)
     }
     return (
       <div className="App">

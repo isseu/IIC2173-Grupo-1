@@ -1,6 +1,8 @@
 .RoomList {
 	background-color: #434753;
 	color: #ffffff;
+	padding: 10px;
+	padding-top: 0px;
 }
 .RoomList .btn {
 	border-radius: 0px;
