@@ -3,6 +3,7 @@ import './App.css';
 import { Col, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import RoomList from './RoomList'
 import Chat from './Chat'
+import MainLogin from './Login/MainLogin'
 
 class App extends Component {
 
@@ -56,7 +57,10 @@ class App extends Component {
               GeoChat
             </li>
             <li>
-              Usuario #123
+              <MainLogin/>
+            </li>
+            <li>
+              Usuario #1234
             </li>
           	<RoomList onClickChatRoom={this.handleOnChangeSelectedRoom} />
           </ul>
