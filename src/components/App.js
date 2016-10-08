@@ -79,7 +79,7 @@ class App extends Component {
 
 App.childContextTypes = {
   client: React.PropTypes.object.isRequired,
-  current_user: React.PropTypes.object.isRequired
+  current_user: React.PropTypes.string.isRequired
 }
 
 export default App;

@@ -17,19 +17,13 @@ class Chat extends Component {
     }
     this.handleSendMessage = this.handleSendMessage.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.suscribeListeners = this.suscribeListeners.bind(this)
+    this.unsuscribeListeners = this.unsuscribeListeners.bind(this)
   }
 
-  componentWillReceiveProps () {
-    this.setState({
-      input: '',
-      messages: []
-    })
-  }
-
-  componentWillMount() {
-    this.room = this.context.client.record.getRecord(this.props.bsRecord)
-    this.setState({ name: this.room.get('name') })
-    this.room.subscribe('name', (new_name) => {
+  suscribeListeners () {
+    this.room_record = this.context.client.record.getRecord(this.props.bsRecord)
+    this.room_record.subscribe('name', (new_name) => {
       this.setState({ name: new_name })
     }, true)
     this.users_list = this.context.client.record.getList(this.props.bsRecord + '/users')
@@ -37,12 +31,37 @@ class Chat extends Component {
     this.users_list.subscribe((entries) => {
       this.setState({ users: entries })
     })
-    this.context.client.event.subscribe(this.props.bsRecord + '/new-message-chat', (data) => {
+    this.context.client.event.subscribe(this.props.bsRecord + '/new-message-chat',
+    (data) => {
       this.setState({ messages: this.state.messages.concat([data])}, () => {
         var node = this.refs.messages
         node.scrollTop = node.scrollHeight
       })
     })
+  }
+
+  unsuscribeListeners () {
+    this.room_record.discard()
+    this.users_list.discard()
+    this.context.client.event.unsubscribe(this.props.bsRecord + '/new-message-chat')
+  }
+
+  componentWillMount() {
+    this.suscribeListeners()
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      input: '',
+      messages: []
+    })
+    this.unsuscribeListeners()
+    this.suscribeListeners()
+  }
+
+  componentWillUnmount() {
+    alert(1)
+    this.unsuscribeListeners()
   }
 
   handleChange(e) {
@@ -52,8 +71,8 @@ class Chat extends Component {
   handleSendMessage(e) {
     e.preventDefault()
     if(this.state.input.length === 0) return;
-    this.context.client.event.emit('new-message-chat', {
-      username: 'Yo',
+    this.context.client.event.emit(this.props.bsRecord + '/new-message-chat', {
+      username: this.context.current_user,
       datetime: moment().valueOf(),
       text: this.state.input
     })
@@ -69,7 +88,7 @@ class Chat extends Component {
           </div>
           <div className="messages" ref="messages">
             <ul>
-              {this.state.messages.map((message) => <Message data={message} key={message._id}/>)}
+              {this.state.messages.map((message, index) => <Message data={message} key={index}/>)}
             </ul>
           </div>
           <div className="chat_input">
@@ -102,7 +121,8 @@ class Chat extends Component {
 }
 
 Chat.contextTypes = {
-  client: React.PropTypes.object.isRequired
+  client: React.PropTypes.object.isRequired,
+  current_user: React.PropTypes.string.isRequired
 }
 
 Chat.PropTypes = {
