@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Col, Navbar, Nav, NavItem, Tooltip, OverlayTrigger } from 'react-bootstrap'
+import { Col, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import RoomList from './RoomList'
 import Chat from './Chat'
 
@@ -36,28 +36,33 @@ class App extends Component {
     if(this.state.latitude) {
        tooltip = <Tooltip id="tooltip">Lat: {this.state.latitude.toFixed(2)} Lng: {this.state.longitude.toFixed(2)}</Tooltip>
     }
+    // TODO
+    var chatStyle = { }
+    if(this.state.latitude !== '' && this.state.longitude !== '') {
+      chatStyle = {
+        backgroundImage: "url('https://maps.googleapis.com/maps/api/staticmap?center=" + this.state.latitude + "," + this.state.longitude + "&size=980x980&zoom=11&scale=2')",
+        backgroundSize: 'cover'
+      }
+      console.dir(chatStyle)
+    }
     return (
       <div className="App">
-        <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
+        <Col xs={4} md={3} className="full_height sidebar-wrapper">
+          <ul className="sidebar-nav">
+            <li className="sidebar-brand">
               <OverlayTrigger placement="bottom" overlay={tooltip}>
                 <i className="fa fa-globe fa-lg" aria-hidden="true"></i>
               </OverlayTrigger>
               &nbsp;
               GeoChat
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Nav pullRight className="hidden-xs">
-            <NavItem href="#">
-            Usuario #123
-            </NavItem>
-          </Nav>
-        </Navbar>
-        <Col xs={4} md={3} className="full_height">
-        	<RoomList onClickChatRoom={this.handleOnChangeSelectedRoom} />
+            </li>
+            <li>
+              Usuario #123
+            </li>
+          	<RoomList onClickChatRoom={this.handleOnChangeSelectedRoom} />
+          </ul>
         </Col>
-        <Col xs={8} md={9} className="full_height chat_space">
+        <Col xs={8} md={9} className="full_height chat_space" style={chatStyle}>
         	{this.state.selected_chat_room ? <Chat bsRecord={this.state.selected_chat_room} /> : ''}
         </Col>
       </div>

@@ -60,7 +60,7 @@ class Chat extends Component {
               {this.state.messages.map((message) => <Message data={message} key={message._id}/>)}
             </ul>
           </div>
-          <div className="chat_input clearfix">
+          <div className="chat_input">
             <form onSubmit={this.handleSendMessage}>
               <FormGroup bsSize="large">
                 <InputGroup>
