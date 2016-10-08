@@ -16,7 +16,7 @@ class RoomList extends Component {
   }
 
   componentWillMount() {
-    this.user_rooms_list = this.context.client.record.getList('user-1/chats')
+    this.user_rooms_list = this.context.client.record.getList(this.context.current_user + '/chats')
     this.setState({ user_rooms: this.user_rooms_list.getEntries() })
     this.user_rooms_list.subscribe( ( list ) => {
       this.setState({ user_rooms: list })
@@ -38,7 +38,8 @@ class RoomList extends Component {
     // Add it to user list if not exists
     this.context.client.record.has('user-1/' + room, (error, hasRecord) => {
       if(this.state.user_rooms.indexOf(room) === -1 && !hasRecord) { // hasRecord esta malo
-        this.user_rooms_list.addEntry( room );
+        this.user_rooms_list.addEntry( room )
+        this.context.client.record.getList(room + '/users').addEntry(this.context.current_user)
       }
     })
     this.props.onClickChatRoom(room)
@@ -62,7 +63,8 @@ class RoomList extends Component {
 }
 
 RoomList.contextTypes = {
-  client: React.PropTypes.object.isRequired
+  client: React.PropTypes.object.isRequired,
+  current_user: React.PropTypes.string.isRequired
 }
 
 RoomList.PropTypes = {
