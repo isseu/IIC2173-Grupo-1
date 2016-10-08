@@ -6,6 +6,7 @@ import Login from './Login'
 import Register from './Register'
 import './MainLogin.css'
 
+
 class MainLogin extends Component {
 
   constructor(props) {
@@ -19,10 +20,15 @@ class MainLogin extends Component {
   handleChange(e) {
     this.setState({ isLogin: !this.state.isLogin });
   }
-  
+
+  handleToggle(e){
+    this.setState({ showLogin: !this.state.showLogin });
+  }
+
   render() {
     return (
       <div className="MainLogin">
+        { this.props.showLogin ?
         <Col xs={10} xsOffset={1} md={10} mdOffset={1}>
           <Row className="center">
             <Button
@@ -46,10 +52,10 @@ class MainLogin extends Component {
           </Row>
           {this.state.isLogin ? <Login/> : <Register/>}
         </Col>
+        : null }
       </div>
     )
   }
-
 }
 
 export default MainLogin;

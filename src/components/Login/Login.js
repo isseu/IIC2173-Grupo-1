@@ -42,14 +42,14 @@ class Login extends Component {
               value={this.state.password}
               placeholder="Contraseña"
               onChange={this.handlePasswordChange}/>
+          <Pager>
+            <Button
+                type="submit"
+                bsStyle="success">
+              Entrar
+            </Button>
+          </Pager>
         </FormGroup>
-        <Pager>
-          <Button
-              type="submit"
-              bsStyle="success">
-            Entrar
-          </Button>
-        </Pager>
       </div>
     )
   }

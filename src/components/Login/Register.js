@@ -20,6 +20,10 @@ class Register extends Component {
       password: ''
     }
     this.handleNameChange = this.handleNameChange.bind(this)
+    this.handleBloodTypeChange = this.handleBloodTypeChange.bind(this)
+    this.handleAddressChange = this.handleAddressChange.bind(this)
+    this.handleDateOfBirthChange = this.handleDateOfBirthChange.bind(this)
+    this.handleCreditCardChange = this.handleCreditCardChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
   }
 

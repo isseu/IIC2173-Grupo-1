@@ -13,7 +13,8 @@
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.2",
-    "react-maskedinput": "^3.2.4"
+    "react-maskedinput": "^3.2.4",
+    "react-toggle": "^2.1.1"
   },
   "scripts": {
     "server": "node server/init.js",

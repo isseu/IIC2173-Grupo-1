@@ -56,9 +56,11 @@ class App extends Component {
               </OverlayTrigger>
               &nbsp;
               GeoChat
+              &nbsp;
+              
             </li>
             <li>
-              <MainLogin/>
+              <MainLogin showLogin={true}/>
             </li>
             <li>
               Usuario #1234
