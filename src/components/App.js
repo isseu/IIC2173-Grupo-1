@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       latitude: '',
       longitude: '',
-      selected_chat_room: undefined
+      selected_chat_room: undefined,
+      current_user: Math.random().toString(36).substring(7)
     }
     this.handleOnChangeSelectedRoom = this.handleOnChangeSelectedRoom.bind(this)
   }
@@ -70,13 +71,15 @@ class App extends Component {
 
   getChildContext() {
     return {
-      client: this.props.client
+      client: this.props.client,
+      current_user: this.state.current_user
     }
   }
 }
 
 App.childContextTypes = {
-  client: React.PropTypes.object.isRequired
+  client: React.PropTypes.object.isRequired,
+  current_user: React.PropTypes.object.isRequired
 }
 
 export default App;

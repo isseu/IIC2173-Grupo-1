@@ -13,7 +13,7 @@ class Chat extends Component {
       name: '',
       input: '',
       messages: [],
-      users: [1, 2, 3]
+      users: []
     }
     this.handleSendMessage = this.handleSendMessage.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -32,6 +32,11 @@ class Chat extends Component {
     this.room.subscribe('name', (new_name) => {
       this.setState({ name: new_name })
     }, true)
+    this.users_list = this.context.client.record.getList(this.props.bsRecord + '/users')
+    this.setState({ users: this.users_list.getEntries() })
+    this.users_list.subscribe((entries) => {
+      this.setState({ users: entries })
+    })
     this.context.client.event.subscribe(this.props.bsRecord + '/new-message-chat', (data) => {
       this.setState({ messages: this.state.messages.concat([data])}, () => {
         var node = this.refs.messages
@@ -88,7 +93,7 @@ class Chat extends Component {
           </Col>
           <Col md={3} className="chat_user_list hidden-xs hidden-sm">
             <ul className="user-list">
-              {this.state.users.map((user) => <UserListItem data={user} key={user}/>)}
+              {this.state.users.map((user) => <UserListItem dsRecord={user} key={user}/>)}
             </ul>
           </Col>
       </div>
